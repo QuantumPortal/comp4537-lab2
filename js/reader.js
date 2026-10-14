@@ -20,6 +20,15 @@ function createNote(newNote) {
 
 window.addEventListener('load', () => {
     
+    loadNotes();
+})
+
+window.addEventListener('storage', (event) => {
+    existingNoteDiv.replaceChildren();
+    loadNotes();
+});
+
+function loadNotes() {
     const allNotes = Object.entries(localStorage);
 
     console.log(allNotes)
@@ -27,4 +36,4 @@ window.addEventListener('load', () => {
         console.log(value)
         createNote(Note.fromJSON(value))
     });
-})
+}
